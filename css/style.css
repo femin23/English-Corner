@@ -3002,14 +3002,51 @@ button {
     font-size: 0.85rem !important;
   }
 
-  .footer-links {
+  .footer-top-row {
     flex-direction: column !important;
-    gap: 10px !important;
-    align-items: flex-start !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 28px !important;
   }
 
-  .footer-top-row {
-    gap: 24px !important;
+  .footer-links {
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  .footer-contact-block {
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  .footer-contact-item {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .footer-social-block {
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  .footer-social-icons {
+    justify-content: center !important;
+  }
+
+  .footer-bottom-row {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 12px !important;
+  }
+
+  .footer-legal-links {
+    justify-content: center !important;
   }
 }
 
