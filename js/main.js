@@ -500,6 +500,25 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
+  // Instagram Reels 9:16 Carousel Slider Controls
+  // ==========================================
+  const reelTrack = document.getElementById('reelCarouselTrack');
+  const reelPrevBtn = document.getElementById('reelSliderPrevBtn');
+  const reelNextBtn = document.getElementById('reelSliderNextBtn');
+
+  if (reelTrack && reelPrevBtn && reelNextBtn) {
+    reelNextBtn.addEventListener('click', () => {
+      const cardWidth = reelTrack.querySelector('.reel-item')?.offsetWidth || 300;
+      reelTrack.scrollBy({ left: cardWidth + 22, behavior: 'smooth' });
+    });
+
+    reelPrevBtn.addEventListener('click', () => {
+      const cardWidth = reelTrack.querySelector('.reel-item')?.offsetWidth || 300;
+      reelTrack.scrollBy({ left: -(cardWidth + 22), behavior: 'smooth' });
+    });
+  }
+
+  // ==========================================
   // Language Switcher Logic (Malayalam / English)
   // Full Website Dynamic Translation Engine
   // ==========================================
@@ -710,7 +729,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // 7. Video Reviews Section
+    // 7. Video Reviews & Reels Section
     const videoSection = document.getElementById('video-reviews');
     if (videoSection) {
       const videoTag = videoSection.querySelector('.section-tag');
@@ -720,25 +739,37 @@ document.addEventListener('DOMContentLoaded', () => {
       if (videoTitle) videoTitle.innerHTML = `${t.video_title_1} <span class="text-lime">${t.video_title_2}</span>`;
       if (videoSub) videoSub.textContent = t.video_sub;
 
-      const videoCards = videoSection.querySelectorAll('.video-card-916');
-      if (videoCards.length >= 3) {
-        // Video 1
-        videoCards[0].querySelector('.video-badge-tag').innerHTML = `<i class="fa-solid fa-graduation-cap"></i> ${t.video1_badge}`;
-        videoCards[0].querySelector('.video-student-name').textContent = t.video1_name;
-        videoCards[0].querySelector('.video-student-role').textContent = t.video1_role;
-        videoCards[0].querySelector('.video-review-caption').textContent = t.video1_caption;
+      const videoCards = videoSection.querySelectorAll('.reel-item');
+      if (videoCards.length >= 5) {
+        // Reel 1
+        videoCards[0].querySelector('.video-badge-tag').innerHTML = `<i class="fa-brands fa-instagram"></i> ${t.reel1_badge}`;
+        videoCards[0].querySelector('.video-student-name').textContent = t.reel1_name;
+        videoCards[0].querySelector('.video-student-role').textContent = t.reel1_role;
+        videoCards[0].querySelector('.video-review-caption').textContent = t.reel1_caption;
 
-        // Video 2
-        videoCards[1].querySelector('.video-badge-tag').innerHTML = `<i class="fa-solid fa-briefcase"></i> ${t.video2_badge}`;
-        videoCards[1].querySelector('.video-student-name').textContent = t.video2_name;
-        videoCards[1].querySelector('.video-student-role').textContent = t.video2_role;
-        videoCards[1].querySelector('.video-review-caption').textContent = t.video2_caption;
+        // Reel 2
+        videoCards[1].querySelector('.video-badge-tag').innerHTML = `<i class="fa-brands fa-instagram"></i> ${t.reel2_badge}`;
+        videoCards[1].querySelector('.video-student-name').textContent = t.reel2_name;
+        videoCards[1].querySelector('.video-student-role').textContent = t.reel2_role;
+        videoCards[1].querySelector('.video-review-caption').textContent = t.reel2_caption;
 
-        // Video 3
-        videoCards[2].querySelector('.video-badge-tag').innerHTML = `<i class="fa-solid fa-award"></i> ${t.video3_badge}`;
-        videoCards[2].querySelector('.video-student-name').textContent = t.video3_name;
-        videoCards[2].querySelector('.video-student-role').textContent = t.video3_role;
-        videoCards[2].querySelector('.video-review-caption').textContent = t.video3_caption;
+        // Reel 3
+        videoCards[2].querySelector('.video-badge-tag').innerHTML = `<i class="fa-brands fa-instagram"></i> ${t.reel3_badge}`;
+        videoCards[2].querySelector('.video-student-name').textContent = t.reel3_name;
+        videoCards[2].querySelector('.video-student-role').textContent = t.reel3_role;
+        videoCards[2].querySelector('.video-review-caption').textContent = t.reel3_caption;
+
+        // Reel 4
+        videoCards[3].querySelector('.video-badge-tag').innerHTML = `<i class="fa-brands fa-instagram"></i> ${t.reel4_badge}`;
+        videoCards[3].querySelector('.video-student-name').textContent = t.reel4_name;
+        videoCards[3].querySelector('.video-student-role').textContent = t.reel4_role;
+        videoCards[3].querySelector('.video-review-caption').textContent = t.reel4_caption;
+
+        // Reel 5
+        videoCards[4].querySelector('.video-badge-tag').innerHTML = `<i class="fa-brands fa-instagram"></i> ${t.reel5_badge}`;
+        videoCards[4].querySelector('.video-student-name').textContent = t.reel5_name;
+        videoCards[4].querySelector('.video-student-role').textContent = t.reel5_role;
+        videoCards[4].querySelector('.video-review-caption').textContent = t.reel5_caption;
       }
     }
 
