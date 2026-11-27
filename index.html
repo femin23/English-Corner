@@ -37,9 +37,43 @@
         <img src="assets/images/logo.png" alt="English Corner Logo" class="preloader-logo">
         <div class="preloader-pulse"></div>
       </div>
+      <div class="preloader-tagline" id="preloaderTagline">
+        “Speak First, Correct Later.”
+      </div>
       <div class="preloader-spinner-bar">
         <div class="preloader-bar-fill"></div>
       </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       LANGUAGE SELECTION MODAL (FIRST OPEN WELCOME)
+       ========================================================================== -->
+  <div class="lang-prompt-modal" id="langPromptModal" role="dialog" aria-modal="true" aria-labelledby="langPromptTitle">
+    <div class="lang-prompt-card">
+      <div class="lang-prompt-icon">
+        <i class="fa-solid fa-language"></i>
+      </div>
+      <h2 class="lang-prompt-title" id="langPromptTitle">Welcome to English Corner</h2>
+      <p class="lang-prompt-sub">
+        Choose your preferred language / നിങ്ങളുടെ ഭാഷ തിരഞ്ഞെടുക്കൂ:
+      </p>
+
+      <div class="lang-options-grid">
+        <button type="button" class="lang-btn-choice" data-select-lang="en">
+          <span class="lang-choice-title">English</span>
+          <span class="lang-choice-sub">Continue in English</span>
+        </button>
+        <button type="button" class="lang-btn-choice" data-select-lang="ml">
+          <span class="lang-choice-title">മലയാളം</span>
+          <span class="lang-choice-sub">മലയാളത്തിൽ കാണുക</span>
+        </button>
+      </div>
+
+      <button type="button" class="btn btn-lime" id="confirmLangBtn" style="width: 100%; border-radius: var(--radius-pill);">
+        <span>Continue / മുന്നോട്ട് പോവുക</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
     </div>
   </div>
 
@@ -57,11 +91,12 @@
       <nav>
         <ul class="nav-menu" id="navMenu">
           <li><a href="#home" class="nav-link active">Home</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#why" class="nav-link">Why Us</a></li>
           <li><a href="#courses" class="nav-link">Courses <i class="fa-solid fa-chevron-down"
                 style="font-size: 0.7rem; margin-left: 3px; opacity: 0.8;"></i></a></li>
           <li><a href="#assessment" class="nav-link" data-open-modal="assessmentModal">Level Assessment</a></li>
-          <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+          <li><a href="#video-reviews" class="nav-link">Video Reviews</a></li>
+          <li><a href="#testimonials" class="nav-link">Reviews</a></li>
           <li><a href="#faq" class="nav-link">FAQ</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
@@ -69,6 +104,12 @@
 
       <!-- Header Right Actions -->
       <div class="header-actions">
+        <!-- Language Switcher Pill -->
+        <button type="button" class="lang-switcher-nav-btn" id="langNavToggle" aria-label="Change Language">
+          <i class="fa-solid fa-globe"></i>
+          <span id="currentLangLabel">EN</span>
+        </button>
+
         <a href="https://wa.me/919567484569?text=Hello%20English%20Corner,%20I%20would%20like%20to%20enquire%20about%20your%20spoken%20English%20courses."
           target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-pill">
           <i class="fa-brands fa-whatsapp" style="font-size: 1.15rem;"></i>
@@ -101,6 +142,27 @@
             <span>CAREER SKILLS</span>
           </div>
 
+          <!-- Official Tagline Badge -->
+          <div>
+            <div class="hero-tagline-badge" id="heroTagline">
+              <i class="fa-solid fa-quote-left"></i>
+              <span>Speak First, Correct Later.</span>
+            </div>
+          </div>
+
+          <!-- Official Introduction Card -->
+          <div class="hero-intro-quote-card" id="heroIntroBox">
+            <h3 class="hero-intro-headline">
+              <span>English Doesn't Have to Be Perfect.</span> It Just Has to Begin.
+            </h3>
+            <p class="hero-intro-body">
+              English Corner is a friendly space where you can practise English without the fear of making mistakes. Learn grammar, build vocabulary, and turn what you learn into real conversations.
+            </p>
+            <span class="hero-intro-punchline">
+              Because confidence doesn't come before speaking. It comes through speaking.
+            </span>
+          </div>
+
           <h1 class="hero-title">
             Speak English <br>
             <span class="hero-lime-accent">
@@ -120,7 +182,6 @@
               <span>Book a Free Assessment</span>
               <i class="fa-solid fa-arrow-right"></i>
             </button>
-
           </div>
 
           <!-- Social Proof & Learner Rating Bar -->
@@ -152,7 +213,7 @@
               </div>
               <div class="proof-text-block">
                 <span class="rating-score">4.9/5</span>
-                <span class="rating-label">Learner Rating</span>
+                <span class="rating-label">Google Learner Rating</span>
               </div>
             </div>
           </div>
@@ -206,6 +267,94 @@
             <span class="ribbon-line2">Spoken English</span>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 2: WHY ENGLISH CORNER?
+       ========================================================================== -->
+  <section class="why-section" id="why">
+    <div class="container">
+      <div class="why-header">
+        <span class="section-tag">OUR APPROACH</span>
+        <h2 class="section-title">
+          Why <span class="text-lime">English Corner?</span>
+        </h2>
+        <p class="section-subtitle">
+          A supportive, real-world learning space built to take you from hesitation to natural speaking fluency.
+        </p>
+      </div>
+
+      <div class="why-grid">
+        <!-- Highlight 1: Speak More -->
+        <div class="why-card">
+          <div class="why-icon-wrap">
+            <i class="fa-solid fa-comments"></i>
+          </div>
+          <h3 class="why-card-title">Speak More</h3>
+          <p class="why-card-desc">
+            Practise English through everyday conversations.
+          </p>
+        </div>
+
+        <!-- Highlight 2: Learn Naturally -->
+        <div class="why-card">
+          <div class="why-icon-wrap">
+            <i class="fa-solid fa-seedling"></i>
+          </div>
+          <h3 class="why-card-title">Learn Naturally</h3>
+          <p class="why-card-desc">
+            Understand grammar and vocabulary through practical examples.
+          </p>
+        </div>
+
+        <!-- Highlight 3: Personalised Learning -->
+        <div class="why-card">
+          <div class="why-icon-wrap">
+            <i class="fa-solid fa-user-gear"></i>
+          </div>
+          <h3 class="why-card-title">Personalised Learning</h3>
+          <p class="why-card-desc">
+            Learn according to your level and learning needs.
+          </p>
+        </div>
+
+        <!-- Highlight 4: Improve Gradually -->
+        <div class="why-card">
+          <div class="why-icon-wrap">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <h3 class="why-card-title">Improve Gradually</h3>
+          <p class="why-card-desc">
+            Make mistakes, receive feedback, and keep improving.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 3: LEVEL ASSESSMENT BANNER (MOVED ABOVE FIND THE RIGHT COURSE)
+       ========================================================================== -->
+  <section class="assessment-banner" id="assessment">
+    <div class="container">
+      <div class="assessment-banner-card">
+        <div class="assessment-left">
+          <div class="assessment-icon-wrap">
+            <img src="assets/icons/checklist-3d.svg" alt="English Level Assessment Checklist">
+          </div>
+          <div class="assessment-text">
+            <h3>How Good Is Your Spoken English? Find Out Free</h3>
+            <p>
+              Take a quick, free assessment and get a personalised learning plan based on your current level and goals.
+            </p>
+          </div>
+        </div>
+        <button class="btn btn-lime" data-open-modal="assessmentModal">
+          <span>Check Your English Level</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
       </div>
     </div>
   </section>
@@ -363,127 +512,95 @@
   </section>
 
   <!-- ==========================================================================
-       LEVEL ASSESSMENT BANNER
+       SECTION 4: STUDENT VIDEO REVIEWS (9:16 VERTICAL RATIO)
        ========================================================================== -->
-  <section class="assessment-banner" id="assessment">
+  <section class="video-reviews-section" id="video-reviews">
     <div class="container">
-      <div class="assessment-banner-card">
-        <div class="assessment-left">
-          <div class="assessment-icon-wrap">
-            <img src="assets/icons/checklist-3d.svg" alt="English Level Assessment Checklist">
+      <div class="testimonials-header-row" style="margin-bottom: 40px;">
+        <div>
+          <span class="section-tag">REAL STUDENT STORIES</span>
+          <h2 class="section-title">
+            Student <span class="text-lime">Video Reviews</span>
+          </h2>
+          <p class="section-subtitle">
+            Watch our learners share their real speaking journey, interview success, and confidence milestones.
+          </p>
+        </div>
+      </div>
+
+      <div class="video-reviews-grid">
+        <!-- Video 1: Anjana (IELTS 7.5 Band) -->
+        <div class="video-card-916" onclick="alert('Playing Student Review: Anjana S. sharing how daily 1-on-1 speaking sessions helped her clear IELTS Speaking Band 7.5!')">
+          <div class="video-bg-layer" style="background-image: url('assets/images/avatar-anjana.jpg');"></div>
+          <div class="video-gradient-overlay"></div>
+          
+          <div class="video-card-header">
+            <span class="video-badge-tag"><i class="fa-solid fa-graduation-cap"></i> IELTS 7.5</span>
+            <span class="video-ratio-indicator"><i class="fa-solid fa-mobile-screen"></i> 9:16 REEL</span>
           </div>
-          <div class="assessment-text">
-            <h3>Not Sure About Your English Level?</h3>
-            <p>
-              Take a quick, free assessment and get a personalised learning plan based on your current level and goals.
+
+          <div class="video-play-center">
+            <div class="video-play-btn" aria-label="Play Anjana video review">
+              <i class="fa-solid fa-play" style="margin-left: 4px;"></i>
+            </div>
+          </div>
+
+          <div class="video-card-footer">
+            <h4 class="video-student-name">Anjana S.</h4>
+            <span class="video-student-role">IELTS Aspirant • Trivandrum</span>
+            <p class="video-review-caption">
+              “I had huge hesitation speaking in English. In 30 days, my mental translation stopped completely.”
             </p>
           </div>
         </div>
-        <button class="btn btn-lime" data-open-modal="assessmentModal">
-          <span>Check Your English Level</span>
-          <i class="fa-solid fa-arrow-right"></i>
-        </button>
-      </div>
-    </div>
-  </section>
 
-  <!-- ==========================================================================
-       LEARNING PLANS SECTION
-       ========================================================================== -->
-  <section class="plans-section" id="plans">
-    <div class="container">
-      <div class="plans-header">
-        <span class="section-tag">LEARNING PLANS</span>
-        <h2 class="section-title">
-          Choose a Plan<br>That Fits <span class="text-lime">Your Goal</span>
-        </h2>
-        <p class="section-subtitle">
-          Flexible and well-structured learning plans designed for real progress.
-        </p>
-      </div>
-
-      <div class="plans-grid">
-        <!-- 1. Standard Plan -->
-        <div class="plan-card standard">
-          <div>
-            <div class="plan-card-header">
-              <div class="plan-icon-wrap">
-                <i class="fa-solid fa-book-bookmark"></i>
-              </div>
-              <div class="plan-title-block">
-                <h3>Standard Plan</h3>
-                <span class="session-pill">30+ Interactive Sessions</span>
-              </div>
-            </div>
-
-            <ul class="plan-features-list">
-              <li class="plan-feature-item">
-                <i class="fa-solid fa-check"></i>
-                <span>Build a strong English foundation</span>
-              </li>
-              <li class="plan-feature-item">
-                <i class="fa-solid fa-check"></i>
-                <span>Improve everyday communication</span>
-              </li>
-              <li class="plan-feature-item">
-                <i class="fa-solid fa-check"></i>
-                <span>Gain speaking confidence</span>
-              </li>
-              <li class="plan-feature-item">
-                <i class="fa-solid fa-check"></i>
-                <span>30 minutes daily live one-to-one on Google Meet</span>
-              </li>
-            </ul>
+        <!-- Video 2: Arun K. (Software Engineer Interview) -->
+        <div class="video-card-916" onclick="alert('Playing Student Review: Arun K. sharing his experience cracking his IT job interview after personalised interview drills!')">
+          <div class="video-bg-layer" style="background-image: url('assets/images/avatar-arun.jpg');"></div>
+          <div class="video-gradient-overlay"></div>
+          
+          <div class="video-card-header">
+            <span class="video-badge-tag"><i class="fa-solid fa-briefcase"></i> IT Interview</span>
+            <span class="video-ratio-indicator"><i class="fa-solid fa-mobile-screen"></i> 9:16 REEL</span>
           </div>
 
-          <div class="plan-btn-wrap">
-            <button class="btn btn-enrol" data-open-modal="bookingModal"
-              data-course-select="Standard Plan (30+ Sessions)">
-              <span>Enrol Now</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
+          <div class="video-play-center">
+            <div class="video-play-btn" aria-label="Play Arun video review">
+              <i class="fa-solid fa-play" style="margin-left: 4px;"></i>
+            </div>
+          </div>
+
+          <div class="video-card-footer">
+            <h4 class="video-student-name">Arun K.</h4>
+            <span class="video-student-role">Software Engineer • Kochi</span>
+            <p class="video-review-caption">
+              “The mock interview drills gave me the exact sentences and body language to clear my technical round.”
+            </p>
           </div>
         </div>
 
-        <!-- 2. Mastery Plan (Highlighted) -->
-        <div class="plan-card mastery">
-          <div>
-            <div class="plan-card-header">
-              <div class="plan-icon-wrap">
-                <img src="assets/icons/crown.svg" alt="Crown Icon" style="width: 32px; height: 32px;">
-              </div>
-              <div class="plan-title-block">
-                <h3>Mastery Plan</h3>
-                <span class="session-pill">60 Interactive Sessions</span>
-              </div>
-            </div>
-
-            <ul class="plan-features-list">
-              <li class="plan-feature-item">
-                <i class="fa-solid fa-check"></i>
-                <span>A complete foundation-to-fluency journey</span>
-              </li>
-              <li class="plan-feature-item">
-                <i class="fa-solid fa-check"></i>
-                <span>Advanced conversation skills</span>
-              </li>
-              <li class="plan-feature-item">
-                <i class="fa-solid fa-check"></i>
-                <span>Sustained confidence for real-life situations</span>
-              </li>
-              <li class="plan-feature-item">
-                <i class="fa-solid fa-check"></i>
-                <span>Comprehensive interview preparation & vocabulary drills</span>
-              </li>
-            </ul>
+        <!-- Video 3: Neha R. (Workplace Presentations) -->
+        <div class="video-card-916" onclick="alert('Playing Student Review: Neha R. on gaining speaking confidence for client calls and presentations!')">
+          <div class="video-bg-layer" style="background-image: url('assets/images/avatar-neha.jpg');"></div>
+          <div class="video-gradient-overlay"></div>
+          
+          <div class="video-card-header">
+            <span class="video-badge-tag"><i class="fa-solid fa-award"></i> Career Skills</span>
+            <span class="video-ratio-indicator"><i class="fa-solid fa-mobile-screen"></i> 9:16 REEL</span>
           </div>
 
-          <div class="plan-btn-wrap">
-            <button class="btn btn-enrol" data-open-modal="bookingModal"
-              data-course-select="Mastery Plan (60 Sessions)">
-              <span>Enrol Now</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
+          <div class="video-play-center">
+            <div class="video-play-btn" aria-label="Play Neha video review">
+              <i class="fa-solid fa-play" style="margin-left: 4px;"></i>
+            </div>
+          </div>
+
+          <div class="video-card-footer">
+            <h4 class="video-student-name">Neha R.</h4>
+            <span class="video-student-role">Corporate Professional • Trivandrum</span>
+            <p class="video-review-caption">
+              “Now I lead team standups without fear or nervousness. Flexible morning timings worked perfectly!”
+            </p>
           </div>
         </div>
       </div>
@@ -491,18 +608,18 @@
   </section>
 
   <!-- ==========================================================================
-       LEARNER STORIES / TESTIMONIALS SECTION
+       LEARNER STORIES / TESTIMONIALS SECTION & GOOGLE REVIEWS INTEGRATION
        ========================================================================== -->
   <section class="testimonials-section" id="testimonials">
     <div class="container">
       <div class="testimonials-header-row">
         <div>
-          <span class="section-tag">LEARNER STORIES</span>
+          <span class="section-tag">VERIFIED TESTIMONIALS</span>
           <h2 class="section-title">
             What Our <span class="text-lime">Learners Say</span>
           </h2>
           <p class="section-subtitle">
-            Real experiences. Real progress. From learners like you.
+            Real experiences. Real progress. From learners who transformed their speaking at English Corner.
           </p>
         </div>
 
@@ -513,6 +630,122 @@
           <button class="slider-btn" id="testimonialNextBtn" aria-label="Next testimonial">
             <i class="fa-solid fa-arrow-right"></i>
           </button>
+        </div>
+      </div>
+
+      <!-- Google Business Profile Badge Header (Brief item 6) -->
+      <div class="google-banner-badge">
+        <svg class="google-g-logo" viewBox="0 0 48 48">
+          <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+          <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+          <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.79l7.97-6.2z"/>
+          <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+        </svg>
+        <span class="google-badge-score">4.9</span>
+        <div class="google-badge-stars">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <span class="google-badge-count">Based on 120+ Google Reviews</span>
+        <span class="google-verified-pill"><i class="fa-solid fa-circle-check"></i> Google Verified</span>
+      </div>
+
+      <!-- Google Reviews Cards Grid -->
+      <div class="google-reviews-grid" style="margin-bottom: 40px;">
+        <!-- Google Review 1 -->
+        <div class="google-review-card">
+          <div>
+            <div class="google-card-header">
+              <div class="google-author-block">
+                <img src="assets/images/avatar-anjana.jpg" alt="Anjana S." class="google-author-avatar">
+                <div>
+                  <h4 class="google-author-name">Anjana S.</h4>
+                  <span class="google-review-date">2 weeks ago • Google Review</span>
+                </div>
+              </div>
+              <svg class="google-icon-svg" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+              </svg>
+            </div>
+            <div class="google-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="google-review-text">
+              “The one-to-one training at English Corner really helped me improve my spoken English and overall IELTS band score. Dedicated trainers and practical feedback!”
+            </p>
+          </div>
+        </div>
+
+        <!-- Google Review 2 -->
+        <div class="google-review-card">
+          <div>
+            <div class="google-card-header">
+              <div class="google-author-block">
+                <img src="assets/images/avatar-arun.jpg" alt="Arun K." class="google-author-avatar">
+                <div>
+                  <h4 class="google-author-name">Arun K.</h4>
+                  <span class="google-review-date">a month ago • Google Review</span>
+                </div>
+              </div>
+              <svg class="google-icon-svg" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+              </svg>
+            </div>
+            <div class="google-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="google-review-text">
+              “The interview training was superb. I felt much more confident and managed to clear my technical interview easily. Best spoken English institute in Kerala.”
+            </p>
+          </div>
+        </div>
+
+        <!-- Google Review 3 -->
+        <div class="google-review-card">
+          <div>
+            <div class="google-card-header">
+              <div class="google-author-block">
+                <img src="assets/images/avatar-neha.jpg" alt="Neha R." class="google-author-avatar">
+                <div>
+                  <h4 class="google-author-name">Neha R.</h4>
+                  <span class="google-review-date">3 weeks ago • Google Review</span>
+                </div>
+              </div>
+              <svg class="google-icon-svg" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+              </svg>
+            </div>
+            <div class="google-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="google-review-text">
+              “Personalised classes, flexible timings and practical sessions made a big difference in my communication at work. Highly appreciate their patient trainers!”
+            </p>
+          </div>
         </div>
       </div>
 

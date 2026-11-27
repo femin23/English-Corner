@@ -498,4 +498,119 @@ document.addEventListener('DOMContentLoaded', () => {
       testimonialCards[activeIndex].style.outline = '2px solid var(--accent-lime)';
     });
   }
+
+  // ==========================================
+  // Language Switcher Logic (Malayalam / English)
+  // ==========================================
+  const langModal = document.getElementById('langPromptModal');
+  const langChoices = document.querySelectorAll('.lang-btn-choice');
+  const confirmLangBtn = document.getElementById('confirmLangBtn');
+  const langNavToggle = document.getElementById('langNavToggle');
+  const currentLangLabel = document.getElementById('currentLangLabel');
+
+  let selectedLang = localStorage.getItem('ec_preferred_lang') || 'en';
+
+  const translations = {
+    en: {
+      tagline: '“Speak First, Correct Later.”',
+      introHead: '<span>English Doesn\'t Have to Be Perfect.</span> It Just Has to Begin.',
+      introBody: 'English Corner is a friendly space where you can practise English without the fear of making mistakes. Learn grammar, build vocabulary, and turn what you learn into real conversations.',
+      introPunchline: 'Because confidence doesn\'t come before speaking. It comes through speaking.',
+      heroTitle: 'Speak English <br><span class="hero-lime-accent">with Confidence <svg class="lime-brush-svg" viewBox="0 0 160 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8.5C48 3.5 110 3 157 9" stroke="#cbf438" stroke-width="3.5" stroke-linecap="round" /></svg></span>',
+      heroDesc: 'Personalised, live, one-to-one training to help you speak better, crack interviews, and grow your career.',
+      assessmentTitle: 'How Good Is Your Spoken English? Find Out Free',
+      assessmentDesc: 'Take a quick, free assessment and get a personalised learning plan based on your current level and goals.',
+      langLabel: 'EN'
+    },
+    ml: {
+      tagline: '“ആദ്യം സംസാരിക്കൂ, തിരുത്തലുകൾ പിന്നാലെ.” (Speak First, Correct Later)',
+      introHead: '<span>ഇംഗ്ലീഷ് തെറ്റുകൂടാതെ പെർഫെക്റ്റ് ആവേണ്ടതില്ല.</span> ആദ്യം സംസാരിച്ചു തുടങ്ങുകയാണ് വേണ്ടത്.',
+      introBody: 'തെറ്റുകൾ വരുമോയെന്ന ഭയമില്ലാതെ ഇംഗ്ലീഷ് സംസാരിച്ചു പരിശീലിക്കാൻ സൗഹൃദപരമായ ഒരിടമാണ് ഇംഗ്ലീഷ് കോർണർ. വ്യാകരണവും പദസമ്പത്തും പഠിച്ച്, പഠിച്ച കാര്യങ്ങൾ യഥാർത്ഥ സംഭാഷണങ്ങളാക്കി മാറ്റൂ.',
+      introPunchline: 'കാരണം ആത്മവിശ്വാസം വന്നിട്ടല്ല സംസാരിക്കേണ്ടത്, സംസാരിച്ചു തുടങ്ങുമ്പോഴാണ് ആത്മവിശ്വാസം ഉണ്ടാവുന്നത്.',
+      heroTitle: 'ആത്മവിശ്വാസത്തോടെ <br><span class="hero-lime-accent">ഇംഗ്ലീഷ് സംസാരിക്കാം <svg class="lime-brush-svg" viewBox="0 0 160 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8.5C48 3.5 110 3 157 9" stroke="#cbf438" stroke-width="3.5" stroke-linecap="round" /></svg></span>',
+      heroDesc: 'ഗൂഗിൾ മീറ്റിലൂടെ ലൈവ് വൺ-ടു-വൺ ട്രെയിനിംഗ്. ഇന്റർവ്യൂകൾ ജയിക്കാനും മികച്ച കരിയറിനും ഞങ്ങളോടൊപ്പം സംസാരിച്ചു തുടങ്ങൂ.',
+      assessmentTitle: 'നിങ്ങളുടെ ഇംഗ്ലീഷ് സംസാരിക്കാനുള്ള കഴിവ് എത്രത്തോളമുണ്ട്? സൗജന്യമായി പരിശോധിക്കൂ',
+      assessmentDesc: 'ലളിതമായ സൗജന്യ ലെവൽ ടെസ്റ്റിലൂടെ നിങ്ങളുടെ ഇപ്പോഴത്തെ ലെവൽ മനസ്സിലാക്കി അനുയോജ്യമായ പഠനരീതി കണ്ടെത്തൂ.',
+      langLabel: 'മലയാളം'
+    }
+  };
+
+  function applyLanguage(lang) {
+    selectedLang = lang;
+    localStorage.setItem('ec_preferred_lang', lang);
+    if (currentLangLabel) {
+      currentLangLabel.textContent = translations[lang].langLabel;
+    }
+
+    // Update active state in choices
+    langChoices.forEach(btn => {
+      if (btn.dataset.selectLang === lang) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    // Update key DOM nodes if present
+    const preloaderTagline = document.getElementById('preloaderTagline');
+    if (preloaderTagline) preloaderTagline.textContent = translations[lang].tagline;
+
+    const heroTagline = document.getElementById('heroTagline');
+    if (heroTagline) {
+      const span = heroTagline.querySelector('span');
+      if (span) span.textContent = (lang === 'ml') ? 'Speak First, Correct Later. (ആദ്യം സംസാരിക്കൂ, തിരുത്തലുകൾ പിന്നാലെ)' : 'Speak First, Correct Later.';
+    }
+
+    const heroIntroBox = document.getElementById('heroIntroBox');
+    if (heroIntroBox) {
+      const h3 = heroIntroBox.querySelector('.hero-intro-headline');
+      const p = heroIntroBox.querySelector('.hero-intro-body');
+      const punchline = heroIntroBox.querySelector('.hero-intro-punchline');
+      if (h3) h3.innerHTML = translations[lang].introHead;
+      if (p) p.textContent = translations[lang].introBody;
+      if (punchline) punchline.textContent = translations[lang].introPunchline;
+    }
+
+    const assessmentSection = document.getElementById('assessment');
+    if (assessmentSection) {
+      const h3 = assessmentSection.querySelector('h3');
+      const p = assessmentSection.querySelector('p');
+      if (h3) h3.textContent = translations[lang].assessmentTitle;
+      if (p) p.textContent = translations[lang].assessmentDesc;
+    }
+  }
+
+  // Check if first-time visitor
+  const hasChosenLang = localStorage.getItem('ec_lang_chosen');
+  if (!hasChosenLang && langModal) {
+    setTimeout(() => {
+      langModal.classList.add('show');
+    }, 800);
+  }
+
+  // Lang option click
+  langChoices.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.dataset.selectLang;
+      applyLanguage(lang);
+    });
+  });
+
+  if (confirmLangBtn && langModal) {
+    confirmLangBtn.addEventListener('click', () => {
+      localStorage.setItem('ec_lang_chosen', 'true');
+      langModal.classList.remove('show');
+    });
+  }
+
+  // Toggle button in header
+  if (langNavToggle) {
+    langNavToggle.addEventListener('click', () => {
+      const nextLang = (selectedLang === 'en') ? 'ml' : 'en';
+      applyLanguage(nextLang);
+    });
+  }
+
+  // Initial apply
+  applyLanguage(selectedLang);
 });
