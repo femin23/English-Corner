@@ -355,7 +355,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 78px;
+  height: 86px;
 }
 
 .logo-wrapper {
@@ -365,9 +365,15 @@ button {
 }
 
 .logo-img {
-  height: 46px;
+  height: 60px;
+  max-height: 64px;
   width: auto;
   object-fit: contain;
+  transition: transform var(--transition-fast);
+}
+
+.logo-wrapper:hover .logo-img {
+  transform: scale(1.03);
 }
 
 .nav-menu {
@@ -1844,9 +1850,17 @@ button {
 }
 
 @media (max-width: 768px) {
+  .header-container {
+    height: 76px;
+  }
+
+  .logo-img {
+    height: 52px;
+  }
+
   .nav-menu {
     position: fixed;
-    top: 78px;
+    top: 76px;
     left: 0;
     width: 100%;
     background: #061f17;
