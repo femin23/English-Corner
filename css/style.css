@@ -778,6 +778,57 @@ button {
   gap: 22px;
 }
 
+/* Courses Carousel Wrapper & Track (Left to Right Scrolling) */
+.courses-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 10px 4px 24px;
+}
+
+.courses-carousel-track {
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px;
+  scrollbar-width: none;
+}
+
+.courses-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.course-slide-item {
+  flex: 0 0 calc((100% - 66px) / 4);
+  min-width: 270px;
+  scroll-snap-align: start;
+}
+
+@media (max-width: 1100px) {
+  .course-slide-item {
+    flex: 0 0 calc((100% - 44px) / 3);
+    min-width: 260px;
+  }
+}
+
+@media (max-width: 820px) {
+  .course-slide-item {
+    flex: 0 0 calc((100% - 22px) / 2);
+    min-width: 250px;
+  }
+}
+
+@media (max-width: 540px) {
+  .course-slide-item {
+    flex: 0 0 88%;
+    min-width: 250px;
+    scroll-snap-align: center;
+  }
+}
+
 .course-card {
   position: relative;
   background-color: #ffffff;

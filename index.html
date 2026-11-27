@@ -373,82 +373,98 @@
             Focused programs for real-life goals — from exams to career growth.
           </p>
         </div>
-        <a href="#courses" class="btn btn-outline-white" style="font-size: 0.88rem; padding: 10px 22px;">
-          <span>View All Courses</span>
-          <i class="fa-solid fa-arrow-right"></i>
-        </a>
+
+        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+          <!-- Left & Right Slider Controls -->
+          <div class="slider-nav-btns">
+            <button class="slider-btn" id="courseSliderPrevBtn" aria-label="Previous course">
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <button class="slider-btn" id="courseSliderNextBtn" aria-label="Next course">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <a href="#courses" class="btn btn-outline-white" style="font-size: 0.88rem; padding: 10px 22px;">
+            <span>View All Courses</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
       </div>
 
-      <div class="courses-grid">
-        <!-- 1. IELTS Training -->
-        <div class="course-card ielts" data-course-key="ielts">
-          <div class="course-top">
-            <h3 class="course-title">IELTS<br>Training</h3>
-            <div class="course-badge-icon">
-              <img src="assets/icons/ielts-icon.svg" alt="IELTS Training Icon">
+      <!-- Courses Carousel Wrapper & Scroll Track -->
+      <div class="courses-carousel-wrapper">
+        <div class="courses-carousel-track" id="coursesCarouselTrack">
+          <!-- 1. IELTS Training -->
+          <div class="course-card course-slide-item ielts" data-course-key="ielts">
+            <div class="course-top">
+              <h3 class="course-title">IELTS<br>Training</h3>
+              <div class="course-badge-icon">
+                <img src="assets/icons/ielts-icon.svg" alt="IELTS Training Icon">
+              </div>
+            </div>
+            <p class="course-desc">
+              Complete preparation for a higher band score with listening, reading, writing & speaking practice.
+            </p>
+            <div class="course-bottom">
+              <div class="course-arrow-btn">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
             </div>
           </div>
-          <p class="course-desc">
-            Complete preparation for a higher band score with listening, reading, writing & speaking practice.
-          </p>
-          <div class="course-bottom">
-            <div class="course-arrow-btn">
-              <i class="fa-solid fa-arrow-right"></i>
-            </div>
-          </div>
-        </div>
 
-        <!-- 2. Interview Training -->
-        <div class="course-card interview" data-course-key="interview">
-          <div class="course-top">
-            <h3 class="course-title">Interview<br>Training</h3>
-            <div class="course-badge-icon">
-              <img src="assets/icons/interview-icon.svg" alt="Interview Training Icon">
+          <!-- 2. Interview Training -->
+          <div class="course-card course-slide-item interview" data-course-key="interview">
+            <div class="course-top">
+              <h3 class="course-title">Interview<br>Training</h3>
+              <div class="course-badge-icon">
+                <img src="assets/icons/interview-icon.svg" alt="Interview Training Icon">
+              </div>
+            </div>
+            <p class="course-desc">
+              Get interview-ready with real practice, self-introductions, and expert guidance to crack HR & tech rounds.
+            </p>
+            <div class="course-bottom">
+              <div class="course-arrow-btn">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
             </div>
           </div>
-          <p class="course-desc">
-            Get interview-ready with real practice, self-introductions, and expert guidance to crack HR & tech rounds.
-          </p>
-          <div class="course-bottom">
-            <div class="course-arrow-btn">
-              <i class="fa-solid fa-arrow-right"></i>
-            </div>
-          </div>
-        </div>
 
-        <!-- 3. Career Skills Training -->
-        <div class="course-card career" data-course-key="career">
-          <div class="course-top">
-            <h3 class="course-title">Career Skills<br>Training</h3>
-            <div class="course-badge-icon">
-              <img src="assets/icons/career-icon.svg" alt="Career Skills Training Icon">
+          <!-- 3. Career Skills Training -->
+          <div class="course-card course-slide-item career" data-course-key="career">
+            <div class="course-top">
+              <h3 class="course-title">Career Skills<br>Training</h3>
+              <div class="course-badge-icon">
+                <img src="assets/icons/career-icon.svg" alt="Career Skills Training Icon">
+              </div>
+            </div>
+            <p class="course-desc">
+              Build the communication and professional skills you need at work: meetings, presentations & emails.
+            </p>
+            <div class="course-bottom">
+              <div class="course-arrow-btn">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
             </div>
           </div>
-          <p class="course-desc">
-            Build the communication and professional skills you need at work: meetings, presentations & emails.
-          </p>
-          <div class="course-bottom">
-            <div class="course-arrow-btn">
-              <i class="fa-solid fa-arrow-right"></i>
-            </div>
-          </div>
-        </div>
 
-        <!-- 4. Personalised Spoken English -->
-        <div class="course-card spoken" data-course-key="spoken">
-          <div class="course-top">
-            <h3 class="course-title">Personalised<br>Spoken English</h3>
-            <div class="course-badge-icon">
-              <img src="assets/icons/spoken-icon.svg" alt="Personalised Spoken English Icon">
+          <!-- 4. Personalised Spoken English -->
+          <div class="course-card course-slide-item spoken" data-course-key="spoken">
+            <div class="course-top">
+              <h3 class="course-title">Personalised<br>Spoken English</h3>
+              <div class="course-badge-icon">
+                <img src="assets/icons/spoken-icon.svg" alt="Personalised Spoken English Icon">
+              </div>
             </div>
-          </div>
-          <p class="course-desc">
-            One-to-one live training, tailored to your level, goals and pace. Overcome Malayalam-to-English translation
-            fear.
-          </p>
-          <div class="course-bottom">
-            <div class="course-arrow-btn">
-              <i class="fa-solid fa-arrow-right"></i>
+            <p class="course-desc">
+              One-to-one live training, tailored to your level, goals and pace. Overcome Malayalam-to-English translation
+              fear.
+            </p>
+            <div class="course-bottom">
+              <div class="course-arrow-btn">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
             </div>
           </div>
         </div>

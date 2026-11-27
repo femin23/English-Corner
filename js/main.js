@@ -496,6 +496,25 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
+  // Courses Carousel Slider Controls (Left to Right)
+  // ==========================================
+  const coursesTrack = document.getElementById('coursesCarouselTrack');
+  const coursePrevBtn = document.getElementById('courseSliderPrevBtn');
+  const courseNextBtn = document.getElementById('courseSliderNextBtn');
+
+  if (coursesTrack && coursePrevBtn && courseNextBtn) {
+    courseNextBtn.addEventListener('click', () => {
+      const cardWidth = coursesTrack.querySelector('.course-slide-item')?.offsetWidth || 280;
+      coursesTrack.scrollBy({ left: cardWidth + 22, behavior: 'smooth' });
+    });
+
+    coursePrevBtn.addEventListener('click', () => {
+      const cardWidth = coursesTrack.querySelector('.course-slide-item')?.offsetWidth || 280;
+      coursesTrack.scrollBy({ left: -(cardWidth + 22), behavior: 'smooth' });
+    });
+  }
+
+  // ==========================================
   // Instagram Reels 9:16 Carousel Slider Controls
   // ==========================================
   const reelTrack = document.getElementById('reelCarouselTrack');
