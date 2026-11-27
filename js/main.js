@@ -501,6 +501,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ==========================================
   // Language Switcher Logic (Malayalam / English)
+  // Full Website Dynamic Translation Engine
   // ==========================================
   const langModal = document.getElementById('langPromptModal');
   const langChoices = document.querySelectorAll('.lang-btn-choice');
@@ -510,39 +511,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let selectedLang = localStorage.getItem('ec_preferred_lang') || 'en';
 
-  const translations = {
-    en: {
-      tagline: '“Speak First, Correct Later.”',
-      introHead: '<span>English Doesn\'t Have to Be Perfect.</span> It Just Has to Begin.',
-      introBody: 'English Corner is a friendly space where you can practise English without the fear of making mistakes. Learn grammar, build vocabulary, and turn what you learn into real conversations.',
-      introPunchline: 'Because confidence doesn\'t come before speaking. It comes through speaking.',
-      heroTitle: 'Speak English <br><span class="hero-lime-accent">with Confidence <svg class="lime-brush-svg" viewBox="0 0 160 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8.5C48 3.5 110 3 157 9" stroke="#cbf438" stroke-width="3.5" stroke-linecap="round" /></svg></span>',
-      heroDesc: 'Personalised, live, one-to-one training to help you speak better, crack interviews, and grow your career.',
-      assessmentTitle: 'How Good Is Your Spoken English? Find Out Free',
-      assessmentDesc: 'Take a quick, free assessment and get a personalised learning plan based on your current level and goals.',
-      langLabel: 'EN'
-    },
-    ml: {
-      tagline: '“ആദ്യം സംസാരിക്കൂ, തിരുത്തലുകൾ പിന്നാലെ.” (Speak First, Correct Later)',
-      introHead: '<span>ഇംഗ്ലീഷ് തെറ്റുകൂടാതെ പെർഫെക്റ്റ് ആവേണ്ടതില്ല.</span> ആദ്യം സംസാരിച്ചു തുടങ്ങുകയാണ് വേണ്ടത്.',
-      introBody: 'തെറ്റുകൾ വരുമോയെന്ന ഭയമില്ലാതെ ഇംഗ്ലീഷ് സംസാരിച്ചു പരിശീലിക്കാൻ സൗഹൃദപരമായ ഒരിടമാണ് ഇംഗ്ലീഷ് കോർണർ. വ്യാകരണവും പദസമ്പത്തും പഠിച്ച്, പഠിച്ച കാര്യങ്ങൾ യഥാർത്ഥ സംഭാഷണങ്ങളാക്കി മാറ്റൂ.',
-      introPunchline: 'കാരണം ആത്മവിശ്വാസം വന്നിട്ടല്ല സംസാരിക്കേണ്ടത്, സംസാരിച്ചു തുടങ്ങുമ്പോഴാണ് ആത്മവിശ്വാസം ഉണ്ടാവുന്നത്.',
-      heroTitle: 'ആത്മവിശ്വാസത്തോടെ <br><span class="hero-lime-accent">ഇംഗ്ലീഷ് സംസാരിക്കാം <svg class="lime-brush-svg" viewBox="0 0 160 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8.5C48 3.5 110 3 157 9" stroke="#cbf438" stroke-width="3.5" stroke-linecap="round" /></svg></span>',
-      heroDesc: 'ഗൂഗിൾ മീറ്റിലൂടെ ലൈവ് വൺ-ടു-വൺ ട്രെയിനിംഗ്. ഇന്റർവ്യൂകൾ ജയിക്കാനും മികച്ച കരിയറിനും ഞങ്ങളോടൊപ്പം സംസാരിച്ചു തുടങ്ങൂ.',
-      assessmentTitle: 'നിങ്ങളുടെ ഇംഗ്ലീഷ് സംസാരിക്കാനുള്ള കഴിവ് എത്രത്തോളമുണ്ട്? സൗജന്യമായി പരിശോധിക്കൂ',
-      assessmentDesc: 'ലളിതമായ സൗജന്യ ലെവൽ ടെസ്റ്റിലൂടെ നിങ്ങളുടെ ഇപ്പോഴത്തെ ലെവൽ മനസ്സിലാക്കി അനുയോജ്യമായ പഠനരീതി കണ്ടെത്തൂ.',
-      langLabel: 'മലയാളം'
-    }
-  };
-
   function applyLanguage(lang) {
     selectedLang = lang;
     localStorage.setItem('ec_preferred_lang', lang);
     if (currentLangLabel) {
-      currentLangLabel.textContent = translations[lang].langLabel;
+      currentLangLabel.textContent = (lang === 'ml') ? 'മലയാളം' : 'EN';
     }
 
-    // Update active state in choices
+    // Active state on selection buttons
     langChoices.forEach(btn => {
       if (btn.dataset.selectLang === lang) {
         btn.classList.add('active');
@@ -551,14 +527,34 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Update key DOM nodes if present
+    // Verify translations data exists
+    const t = (window.translationsData && window.translationsData[lang]) ? window.translationsData[lang] : null;
+    if (!t) return;
+
+    // 1. Navigation items
+    const navLinks = document.querySelectorAll('#navMenu .nav-link');
+    if (navLinks.length >= 8) {
+      navLinks[0].textContent = t.nav_home;
+      navLinks[1].textContent = t.nav_why;
+      navLinks[2].innerHTML = `${t.nav_courses} <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; margin-left: 3px; opacity: 0.8;"></i>`;
+      navLinks[3].textContent = t.nav_assessment;
+      navLinks[4].textContent = t.nav_video_reviews;
+      navLinks[5].textContent = t.nav_reviews;
+      navLinks[6].textContent = t.nav_faq;
+      navLinks[7].textContent = t.nav_contact;
+    }
+
+    const headerWaBtn = document.querySelector('.site-header .btn-whatsapp-pill span');
+    if (headerWaBtn) headerWaBtn.textContent = t.btn_talk_whatsapp;
+
+    // 2. Preloader & Hero Tagline / Intro
     const preloaderTagline = document.getElementById('preloaderTagline');
-    if (preloaderTagline) preloaderTagline.textContent = translations[lang].tagline;
+    if (preloaderTagline) preloaderTagline.textContent = t.preloader_tagline;
 
     const heroTagline = document.getElementById('heroTagline');
     if (heroTagline) {
       const span = heroTagline.querySelector('span');
-      if (span) span.textContent = (lang === 'ml') ? 'Speak First, Correct Later. (ആദ്യം സംസാരിക്കൂ, തിരുത്തലുകൾ പിന്നാലെ)' : 'Speak First, Correct Later.';
+      if (span) span.textContent = t.hero_tagline;
     }
 
     const heroIntroBox = document.getElementById('heroIntroBox');
@@ -566,17 +562,336 @@ document.addEventListener('DOMContentLoaded', () => {
       const h3 = heroIntroBox.querySelector('.hero-intro-headline');
       const p = heroIntroBox.querySelector('.hero-intro-body');
       const punchline = heroIntroBox.querySelector('.hero-intro-punchline');
-      if (h3) h3.innerHTML = translations[lang].introHead;
-      if (p) p.textContent = translations[lang].introBody;
-      if (punchline) punchline.textContent = translations[lang].introPunchline;
+      if (h3) {
+        h3.innerHTML = (lang === 'ml') 
+          ? `<span>ഇംഗ്ലീഷ് തെറ്റുകൂടാതെ പെർഫെക്റ്റ് ആവേണ്ടതില്ല.</span> ആദ്യം സംസാരിച്ചു തുടങ്ങുകയാണ് വേണ്ടത്.`
+          : `<span>English Doesn't Have to Be Perfect.</span> It Just Has to Begin.`;
+      }
+      if (p) p.textContent = t.hero_intro_body;
+      if (punchline) punchline.textContent = t.hero_intro_punchline;
     }
 
-    const assessmentSection = document.getElementById('assessment');
-    if (assessmentSection) {
-      const h3 = assessmentSection.querySelector('h3');
-      const p = assessmentSection.querySelector('p');
-      if (h3) h3.textContent = translations[lang].assessmentTitle;
-      if (p) p.textContent = translations[lang].assessmentDesc;
+    // Hero title & description
+    const heroCategoryBar = document.querySelector('.hero-category-bar');
+    if (heroCategoryBar) {
+      heroCategoryBar.innerHTML = `
+        <span>${t.hero_cat_spoken}</span>
+        <span class="sep">|</span>
+        <span>${t.hero_cat_ielts}</span>
+        <span class="sep">|</span>
+        <span>${t.hero_cat_interview}</span>
+        <span class="sep">|</span>
+        <span>${t.hero_cat_career}</span>
+      `;
+    }
+
+    const heroTitle = document.querySelector('.hero-title');
+    if (heroTitle) {
+      heroTitle.innerHTML = `
+        ${t.hero_title_1} <br>
+        <span class="hero-lime-accent">
+          ${t.hero_title_2}
+          <svg class="lime-brush-svg" viewBox="0 0 160 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 8.5C48 3.5 110 3 157 9" stroke="#cbf438" stroke-width="3.5" stroke-linecap="round" />
+          </svg>
+        </span>
+      `;
+    }
+
+    const heroDesc = document.querySelector('.hero-description');
+    if (heroDesc) heroDesc.textContent = t.hero_desc;
+
+    const heroCtaBtn = document.querySelector('.btn-hero-lime span');
+    if (heroCtaBtn) heroCtaBtn.textContent = t.hero_btn_book;
+
+    const proofLabel = document.querySelector('.proof-label');
+    if (proofLabel) proofLabel.textContent = t.hero_stat_learners;
+
+    const ratingLabel = document.querySelector('.rating-label');
+    if (ratingLabel) ratingLabel.textContent = t.hero_stat_rating;
+
+    // Ribbon Bar items
+    const ribbonCols = document.querySelectorAll('.hero-ribbon-bar .ribbon-col');
+    if (ribbonCols.length >= 4) {
+      ribbonCols[0].querySelector('.ribbon-line1').textContent = t.ribbon_ielts_l1;
+      ribbonCols[0].querySelector('.ribbon-line2').textContent = t.ribbon_ielts_l2;
+
+      ribbonCols[1].querySelector('.ribbon-line1').textContent = t.ribbon_interview_l1;
+      ribbonCols[1].querySelector('.ribbon-line2').textContent = t.ribbon_interview_l2;
+
+      ribbonCols[2].querySelector('.ribbon-line1').textContent = t.ribbon_career_l1;
+      ribbonCols[2].querySelector('.ribbon-line2').textContent = t.ribbon_career_l2;
+
+      ribbonCols[3].querySelector('.ribbon-line1').textContent = t.ribbon_spoken_l1;
+      ribbonCols[3].querySelector('.ribbon-line2').textContent = t.ribbon_spoken_l2;
+    }
+
+    // 3. Section 2: Why English Corner?
+    const whySection = document.getElementById('why');
+    if (whySection) {
+      const whyTag = whySection.querySelector('.section-tag');
+      const whyTitle = whySection.querySelector('.section-title');
+      const whySub = whySection.querySelector('.section-subtitle');
+      if (whyTag) whyTag.textContent = t.why_tag;
+      if (whyTitle) whyTitle.innerHTML = `${t.why_title_1} <span class="text-lime">${t.why_title_2}</span>`;
+      if (whySub) whySub.textContent = t.why_sub;
+
+      const whyCards = whySection.querySelectorAll('.why-card');
+      if (whyCards.length >= 4) {
+        whyCards[0].querySelector('.why-card-title').textContent = t.why_card1_title;
+        whyCards[0].querySelector('.why-card-desc').textContent = t.why_card1_desc;
+
+        whyCards[1].querySelector('.why-card-title').textContent = t.why_card2_title;
+        whyCards[1].querySelector('.why-card-desc').textContent = t.why_card2_desc;
+
+        whyCards[2].querySelector('.why-card-title').textContent = t.why_card3_title;
+        whyCards[2].querySelector('.why-card-desc').textContent = t.why_card3_desc;
+
+        whyCards[3].querySelector('.why-card-title').textContent = t.why_card4_title;
+        whyCards[3].querySelector('.why-card-desc').textContent = t.why_card4_desc;
+      }
+    }
+
+    // 4. Section 3: Level Assessment Banner
+    const assessSection = document.getElementById('assessment');
+    if (assessSection) {
+      const assessH3 = assessSection.querySelector('.assessment-text h3');
+      const assessP = assessSection.querySelector('.assessment-text p');
+      const assessBtn = assessSection.querySelector('.btn-lime span');
+      if (assessH3) assessH3.textContent = t.assess_title;
+      if (assessP) assessP.textContent = t.assess_desc;
+      if (assessBtn) assessBtn.textContent = t.assess_btn;
+    }
+
+    // 5. Courses Section
+    const coursesSection = document.getElementById('courses');
+    if (coursesSection) {
+      const coursesTitle = coursesSection.querySelector('.section-title');
+      const coursesSub = coursesSection.querySelector('.section-subtitle');
+      const viewAllBtn = coursesSection.querySelector('.btn-outline-white span');
+      if (coursesTitle) coursesTitle.innerHTML = `${t.courses_title_1} <span class="text-lime">${t.courses_title_2}</span>`;
+      if (coursesSub) coursesSub.textContent = t.courses_sub;
+      if (viewAllBtn) viewAllBtn.textContent = t.courses_btn_view_all;
+
+      const courseCards = coursesSection.querySelectorAll('.course-card');
+      if (courseCards.length >= 4) {
+        courseCards[0].querySelector('.course-title').innerHTML = t.course1_title.replace(' ', '<br>');
+        courseCards[0].querySelector('.course-desc').textContent = t.course1_desc;
+
+        courseCards[1].querySelector('.course-title').innerHTML = t.course2_title.replace(' ', '<br>');
+        courseCards[1].querySelector('.course-desc').textContent = t.course2_desc;
+
+        courseCards[2].querySelector('.course-title').innerHTML = t.course3_title.replace(' ', '<br>');
+        courseCards[2].querySelector('.course-desc').textContent = t.course3_desc;
+
+        courseCards[3].querySelector('.course-title').innerHTML = t.course4_title.replace(' ', '<br>');
+        courseCards[3].querySelector('.course-desc').textContent = t.course4_desc;
+      }
+    }
+
+    // 6. About Section
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      const aboutTag = aboutSection.querySelector('.section-tag');
+      const aboutTitle = aboutSection.querySelector('.section-title');
+      const aboutP = aboutSection.querySelector('.about-content > p');
+      const aboutBtn = aboutSection.querySelector('.about-content .btn span');
+      if (aboutTag) aboutTag.textContent = t.about_tag;
+      if (aboutTitle) aboutTitle.innerHTML = `${t.about_title_1}<br><span class="text-lime">${t.about_title_2}</span>`;
+      if (aboutP) aboutP.textContent = t.about_desc;
+      if (aboutBtn) aboutBtn.textContent = t.about_btn;
+
+      const pillars = aboutSection.querySelectorAll('.pillar-item .pillar-text');
+      if (pillars.length >= 4) {
+        pillars[0].textContent = t.about_pillar1;
+        pillars[1].textContent = t.about_pillar2;
+        pillars[2].textContent = t.about_pillar3;
+        pillars[3].textContent = t.about_pillar4;
+      }
+    }
+
+    // 7. Video Reviews Section
+    const videoSection = document.getElementById('video-reviews');
+    if (videoSection) {
+      const videoTag = videoSection.querySelector('.section-tag');
+      const videoTitle = videoSection.querySelector('.section-title');
+      const videoSub = videoSection.querySelector('.section-subtitle');
+      if (videoTag) videoTag.textContent = t.video_tag;
+      if (videoTitle) videoTitle.innerHTML = `${t.video_title_1} <span class="text-lime">${t.video_title_2}</span>`;
+      if (videoSub) videoSub.textContent = t.video_sub;
+
+      const videoCards = videoSection.querySelectorAll('.video-card-916');
+      if (videoCards.length >= 3) {
+        // Video 1
+        videoCards[0].querySelector('.video-badge-tag').innerHTML = `<i class="fa-solid fa-graduation-cap"></i> ${t.video1_badge}`;
+        videoCards[0].querySelector('.video-student-name').textContent = t.video1_name;
+        videoCards[0].querySelector('.video-student-role').textContent = t.video1_role;
+        videoCards[0].querySelector('.video-review-caption').textContent = t.video1_caption;
+
+        // Video 2
+        videoCards[1].querySelector('.video-badge-tag').innerHTML = `<i class="fa-solid fa-briefcase"></i> ${t.video2_badge}`;
+        videoCards[1].querySelector('.video-student-name').textContent = t.video2_name;
+        videoCards[1].querySelector('.video-student-role').textContent = t.video2_role;
+        videoCards[1].querySelector('.video-review-caption').textContent = t.video2_caption;
+
+        // Video 3
+        videoCards[2].querySelector('.video-badge-tag').innerHTML = `<i class="fa-solid fa-award"></i> ${t.video3_badge}`;
+        videoCards[2].querySelector('.video-student-name').textContent = t.video3_name;
+        videoCards[2].querySelector('.video-student-role').textContent = t.video3_role;
+        videoCards[2].querySelector('.video-review-caption').textContent = t.video3_caption;
+      }
+    }
+
+    // 8. Testimonials & Google Reviews
+    const testSection = document.getElementById('testimonials');
+    if (testSection) {
+      const testTag = testSection.querySelector('.section-tag');
+      const testTitle = testSection.querySelector('.section-title');
+      const testSub = testSection.querySelector('.section-subtitle');
+      if (testTag) testTag.textContent = t.reviews_tag;
+      if (testTitle) testTitle.innerHTML = `${t.reviews_title_1} <span class="text-lime">${t.reviews_title_2}</span>`;
+      if (testSub) testSub.textContent = t.reviews_sub;
+
+      const googleCount = testSection.querySelector('.google-badge-count');
+      if (googleCount) googleCount.textContent = t.google_badge_text;
+      const googleVer = testSection.querySelector('.google-verified-pill');
+      if (googleVer) googleVer.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${t.google_verified}`;
+    }
+
+    // 9. FAQ Section
+    const faqSection = document.getElementById('faq');
+    if (faqSection) {
+      const faqH3 = faqSection.querySelector('.faq-banner-text h3');
+      const faqP = faqSection.querySelector('.faq-banner-text p');
+      const faqBtn = faqSection.querySelector('.btn-outline-white span');
+      if (faqH3) faqH3.textContent = t.faq_title;
+      if (faqP) faqP.textContent = t.faq_sub;
+      if (faqBtn) faqBtn.textContent = t.faq_btn_view;
+
+      const faqItems = faqSection.querySelectorAll('.faq-item');
+      if (faqItems.length >= 6) {
+        faqItems[0].querySelector('.faq-question span').textContent = t.faq_q1;
+        faqItems[0].querySelector('.faq-answer').textContent = t.faq_a1;
+
+        faqItems[1].querySelector('.faq-question span').textContent = t.faq_q2;
+        faqItems[1].querySelector('.faq-answer').textContent = t.faq_a2;
+
+        faqItems[2].querySelector('.faq-question span').textContent = t.faq_q3;
+        faqItems[2].querySelector('.faq-answer').textContent = t.faq_a3;
+
+        faqItems[3].querySelector('.faq-question span').textContent = t.faq_q4;
+        faqItems[3].querySelector('.faq-answer').textContent = t.faq_a4;
+
+        faqItems[4].querySelector('.faq-question span').textContent = t.faq_q5;
+        faqItems[4].querySelector('.faq-answer').textContent = t.faq_a5;
+
+        faqItems[5].querySelector('.faq-question span').textContent = t.faq_q6;
+        faqItems[5].querySelector('.faq-answer').textContent = t.faq_a6;
+      }
+    }
+
+    // 10. Enrol / CTA Section
+    const ctaSection = document.getElementById('enrol');
+    if (ctaSection) {
+      const ctaH2 = ctaSection.querySelector('.final-cta-text h2');
+      const ctaP = ctaSection.querySelector('.final-cta-text p');
+      const ctaBtn = ctaSection.querySelector('.btn-lime span');
+      if (ctaH2) ctaH2.innerHTML = `${t.cta_title_1} <span class="text-lime">${t.cta_title_2}</span>`;
+      if (ctaP) ctaP.textContent = t.cta_sub;
+      if (ctaBtn) ctaBtn.textContent = t.cta_btn;
+    }
+
+    // 11. Contact Section
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      const cTag = contactSection.querySelector('.section-tag');
+      const cTitle = contactSection.querySelector('.section-title');
+      const cSub = contactSection.querySelector('.about-grid > div > p');
+      if (cTag) cTag.textContent = t.contact_tag;
+      if (cTitle) cTitle.innerHTML = `${t.contact_title_1} <br><span class="text-lime">${t.contact_title_2}</span>`;
+      if (cSub) cSub.textContent = t.contact_sub;
+
+      const contactForm = document.getElementById('contactForm');
+      if (contactForm) {
+        const title = contactSection.querySelector('.contact-form-title');
+        if (title) title.textContent = t.contact_form_title;
+
+        const labels = contactForm.querySelectorAll('.form-label');
+        if (labels.length >= 4) {
+          labels[0].textContent = t.contact_lbl_name;
+          labels[1].textContent = t.contact_lbl_phone;
+          labels[2].textContent = t.contact_lbl_email;
+          labels[3].textContent = t.contact_lbl_msg;
+        }
+
+        const inputs = contactForm.querySelectorAll('.form-input, .form-textarea');
+        if (inputs.length >= 4) {
+          inputs[0].placeholder = t.contact_ph_name;
+          inputs[1].placeholder = t.contact_ph_phone;
+          inputs[2].placeholder = t.contact_ph_email;
+          inputs[3].placeholder = t.contact_ph_msg;
+        }
+
+        const submitBtn = contactForm.querySelector('button[type="submit"] span');
+        if (submitBtn) submitBtn.textContent = t.contact_btn_submit;
+      }
+    }
+
+    // 12. Footer
+    const footer = document.querySelector('.site-footer');
+    if (footer) {
+      const fLinks = footer.querySelectorAll('.footer-link');
+      if (fLinks.length >= 7) {
+        fLinks[0].textContent = t.nav_home;
+        fLinks[1].textContent = t.about_pillar1;
+        fLinks[2].textContent = t.nav_courses;
+        fLinks[3].textContent = t.nav_assessment;
+        fLinks[4].textContent = t.nav_reviews;
+        fLinks[5].textContent = t.nav_faq;
+        fLinks[6].textContent = t.nav_contact;
+      }
+
+      const socialTitle = footer.querySelector('.footer-social-title');
+      if (socialTitle) socialTitle.textContent = t.footer_follow;
+
+      const rightsSpan = footer.querySelector('.footer-bottom-row > span');
+      if (rightsSpan) rightsSpan.textContent = t.footer_rights;
+
+      const legalLinks = footer.querySelectorAll('.footer-legal-links a');
+      if (legalLinks.length >= 2) {
+        legalLinks[0].textContent = t.footer_privacy;
+        legalLinks[1].textContent = t.footer_terms;
+      }
+    }
+
+    // 13. Floating elements
+    const waTooltip = document.querySelector('.whatsapp-tooltip');
+    if (waTooltip) waTooltip.textContent = t.floating_wa_tip;
+
+    // 14. Booking modal
+    const bookModal = document.getElementById('bookingModal');
+    if (bookModal) {
+      const bTag = bookModal.querySelector('.section-tag');
+      const bH2 = bookModal.querySelector('h2');
+      const bP = bookModal.querySelector('p');
+      if (bTag) bTag.textContent = t.modal_book_tag;
+      if (bH2) bH2.innerHTML = `${t.modal_book_title_1} <span class="text-lime">${t.modal_book_title_2}</span>`;
+      if (bP) bP.textContent = t.modal_book_desc;
+
+      const bLabels = bookModal.querySelectorAll('.form-label');
+      if (bLabels.length >= 5) {
+        bLabels[0].textContent = t.modal_book_name;
+        bLabels[1].textContent = t.modal_book_phone;
+        bLabels[2].textContent = t.modal_book_course;
+        bLabels[3].textContent = t.modal_book_time;
+        bLabels[4].textContent = t.modal_book_notes;
+      }
+
+      const bNote = document.getElementById('bookNote');
+      if (bNote) bNote.placeholder = t.modal_book_notes_ph;
+
+      const bSubmit = bookModal.querySelector('button[type="submit"] span');
+      if (bSubmit) bSubmit.textContent = t.modal_book_submit;
     }
   }
 
