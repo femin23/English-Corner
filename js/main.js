@@ -496,6 +496,25 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
+  // Our Approach / Why English Corner Slider Controls (Mobile)
+  // ==========================================
+  const whyTrack = document.getElementById('whyCarouselTrack');
+  const whyPrevBtn = document.getElementById('whySliderPrevBtn');
+  const whyNextBtn = document.getElementById('whySliderNextBtn');
+
+  if (whyTrack && whyPrevBtn && whyNextBtn) {
+    whyNextBtn.addEventListener('click', () => {
+      const cardWidth = whyTrack.querySelector('.why-slide-item')?.offsetWidth || 280;
+      whyTrack.scrollBy({ left: cardWidth + 18, behavior: 'smooth' });
+    });
+
+    whyPrevBtn.addEventListener('click', () => {
+      const cardWidth = whyTrack.querySelector('.why-slide-item')?.offsetWidth || 280;
+      whyTrack.scrollBy({ left: -(cardWidth + 18), behavior: 'smooth' });
+    });
+  }
+
+  // ==========================================
   // Courses Carousel Slider Controls (Left to Right)
   // ==========================================
   const coursesTrack = document.getElementById('coursesCarouselTrack');
