@@ -60,10 +60,13 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Global mobile guard against horizontal overflow */
 body {
   min-height: 100vh;
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100%;
+  position: relative;
   background: radial-gradient(circle at 80% 10%, rgba(20, 80, 60, 0.4) 0%, transparent 50%),
               radial-gradient(circle at 10% 40%, rgba(15, 60, 45, 0.35) 0%, transparent 45%),
               radial-gradient(circle at 90% 80%, rgba(203, 244, 56, 0.08) 0%, transparent 40%),
@@ -879,6 +882,22 @@ button {
   grid-template-columns: 0.95fr 1.05fr;
   align-items: center;
   gap: 48px;
+}
+
+/* Contact Form Card */
+.contact-form-card {
+  background: rgba(6, 25, 19, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  width: 100%;
+}
+
+.contact-form-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 16px;
 }
 
 .about-visual {
@@ -1949,5 +1968,122 @@ button {
   .footer-top-row {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  /* Responsive refinements for mobile & tablet */
+  .container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .about-card-container {
+    padding: 28px 20px;
+    border-radius: var(--radius-lg);
+  }
+
+  .about-grid {
+    gap: 32px;
+  }
+
+  .contact-form-card {
+    padding: 22px 16px;
+    border-radius: var(--radius-md);
+  }
+
+  .contact-form-card .form-input,
+  .contact-form-card .form-textarea {
+    font-size: 0.95rem;
+    padding: 11px 14px;
+  }
+
+  .assessment-banner-card {
+    padding: 28px 20px;
+    border-radius: var(--radius-lg);
+  }
+
+  .faq-banner-card {
+    padding: 26px 20px;
+    border-radius: var(--radius-lg);
+  }
+
+  .final-cta-card {
+    padding: 32px 20px;
+    border-radius: var(--radius-lg);
+  }
+
+  .plan-card {
+    padding: 28px 20px;
+    border-radius: var(--radius-lg);
+  }
+
+  .modal-window {
+    width: 94%;
+    margin: 15px auto;
+  }
+
+  .modal-content-pad {
+    padding: 24px 18px;
+  }
+}
+
+/* Extra small devices guard (<= 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .header-actions .btn-whatsapp-pill span {
+    display: none;
+  }
+
+  .header-actions .btn-whatsapp-pill {
+    padding: 8px 12px;
+  }
+
+  .hero-category-bar {
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .hero-category-bar .sep {
+    display: none;
+  }
+
+  .hero-category-bar span:not(.sep) {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 3px 8px;
+    border-radius: var(--radius-pill);
+  }
+
+  .hero-title {
+    font-size: 2.1rem;
+    line-height: 1.2;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .about-card-container {
+    padding: 22px 14px;
+  }
+
+  .contact-form-card {
+    padding: 18px 12px;
+  }
+
+  .about-pillars {
+    grid-template-columns: 1fr;
   }
 }
