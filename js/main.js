@@ -872,10 +872,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const inputs = contactForm.querySelectorAll('.form-input, .form-textarea');
         if (inputs.length >= 4) {
-          inputs[0].placeholder = t.contact_ph_name;
-          inputs[1].placeholder = t.contact_ph_phone;
-          inputs[2].placeholder = t.contact_ph_email;
-          inputs[3].placeholder = t.contact_ph_msg;
+          inputs.forEach(input => input.removeAttribute('placeholder'));
         }
 
         const submitBtn = contactForm.querySelector('button[type="submit"] span');
@@ -934,7 +931,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const bNote = document.getElementById('bookNote');
-      if (bNote) bNote.placeholder = t.modal_book_notes_ph;
+      if (bNote) bNote.removeAttribute('placeholder');
 
       const bSubmit = bookModal.querySelector('button[type="submit"] span');
       if (bSubmit) bSubmit.textContent = t.modal_book_submit;
