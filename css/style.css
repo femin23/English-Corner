@@ -71,6 +71,115 @@ body {
   background-attachment: fixed;
 }
 
+/* Preloader / Splash Screen */
+.preloader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background-color: #061913; /* Header background color */
+  background: radial-gradient(circle at center, #0a2e22 0%, #061913 80%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s ease;
+}
+
+.preloader-overlay.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+.preloader-logo-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.preloader-logo {
+  max-width: 240px;
+  width: 80vw;
+  height: auto;
+  max-height: 90px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 25px rgba(203, 244, 56, 0.35));
+  animation: preloaderPulse 2s ease-in-out infinite;
+}
+
+.preloader-pulse {
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(203, 244, 56, 0.15) 0%, transparent 70%);
+  animation: preloaderGlow 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.preloader-spinner-bar {
+  width: 140px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.preloader-bar-fill {
+  width: 50%;
+  height: 100%;
+  background: var(--accent-lime);
+  border-radius: 9999px;
+  box-shadow: 0 0 12px var(--accent-lime);
+  animation: preloaderBar 1.4s ease-in-out infinite;
+}
+
+@keyframes preloaderPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.95;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+    filter: drop-shadow(0 0 32px rgba(203, 244, 56, 0.5));
+  }
+}
+
+@keyframes preloaderGlow {
+  0%, 100% {
+    transform: scale(0.9);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.8;
+  }
+}
+
+@keyframes preloaderBar {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(120%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+
 /* Base Container */
 .container {
   width: 100%;
@@ -256,8 +365,9 @@ button {
 }
 
 .logo-img {
-  height: 44px;
+  height: 46px;
   width: auto;
+  object-fit: contain;
 }
 
 .nav-menu {
@@ -1334,7 +1444,9 @@ button {
 }
 
 .footer-logo {
-  height: 44px;
+  height: 46px;
+  width: auto;
+  object-fit: contain;
 }
 
 .footer-links {

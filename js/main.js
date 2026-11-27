@@ -4,6 +4,29 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Preloader dismiss
+  const preloader = document.getElementById('preloader');
+  if (preloader) {
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        preloader.classList.add('fade-out');
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 600);
+      }, 350);
+    });
+
+    // Fallback safety timeout in case window.load takes too long or already triggered
+    setTimeout(() => {
+      if (!preloader.classList.contains('fade-out')) {
+        preloader.classList.add('fade-out');
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 600);
+      }
+    }, 2500);
+  }
+
   // Mobile Navigation Toggle
   const mobileToggle = document.getElementById('mobileToggle');
   const navMenu = document.getElementById('navMenu');
