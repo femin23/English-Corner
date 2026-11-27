@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 54" fill="none">
+  <!-- Book pages on top of speech bubble -->
+  <path d="M12 9C16 6 22 6 25 9C28 6 34 6 38 9" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+  <path d="M14 13C17 10 22 10 25 12C28 10 33 10 36 13" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+  
+  <!-- Chat bubble container -->
+  <path d="M7 16C7 11.5 10.5 8 15 8H35C39.5 8 43 11.5 43 16V36C43 40.5 39.5 44 35 44H18L10 50V43.2C8.2 41.6 7 39 7 36V16Z" fill="#042018" stroke="#ffffff" stroke-width="2.2" stroke-linejoin="round"/>
+  
+  <!-- "E" in White & "C" in Lime Green inside speech bubble -->
+  <text x="13" y="36" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="22" font-weight="900" fill="#ffffff" letter-spacing="-1">E</text>
+  <text x="25" y="36" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="22" font-weight="900" fill="#cbf438" letter-spacing="-1">C</text>
+  
+  <!-- Wordmark -->
+  <text x="54" y="25" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="21" font-weight="900" fill="#ffffff" letter-spacing="0.5">ENGLISH</text>
+  <text x="54" y="43" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="16" font-weight="900" fill="#cbf438" letter-spacing="2">CORNER</text>
+</svg>

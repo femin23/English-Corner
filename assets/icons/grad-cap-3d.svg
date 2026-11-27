@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Books stack -->
+  <rect x="20" y="64" width="60" height="12" rx="4" fill="#0284c7"/>
+  <rect x="24" y="66" width="52" height="8" rx="2" fill="#ffffff" opacity="0.9"/>
+  <rect x="26" y="54" width="48" height="10" rx="3" fill="#059669"/>
+  <rect x="28" y="56" width="44" height="6" rx="2" fill="#ffffff" opacity="0.9"/>
+  <!-- Mortarboard cap -->
+  <polygon points="50,22 86,34 50,46 14,34" fill="#0f172a"/>
+  <polygon points="50,25 80,34 50,43 20,34" fill="#1e293b"/>
+  <!-- Skull cap underneath -->
+  <path d="M32 39C32 48 40 54 50 54C60 54 68 48 68 39" fill="#0f172a"/>
+  <!-- Tassel -->
+  <circle cx="50" cy="34" r="3" fill="#cbf438"/>
+  <path d="M50 34L68 44V56" stroke="#cbf438" stroke-width="2.5" fill="none"/>
+  <rect x="66" y="54" width="4" height="8" rx="2" fill="#cbf438"/>
+</svg>
